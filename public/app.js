@@ -46,5 +46,20 @@ function updateUI() {
     }
 }
 
+// Navigation functions
+function showQuickBuy() {
+    document.getElementById('main-screen').classList.add('hidden');
+    document.getElementById('quick-buy-screen').classList.remove('hidden');
+}
+
+function showDashboard() {
+    // Implement the logic for showing the dashboard screen
+}
+
+function showMainScreen() {
+    document.getElementById('quick-buy-screen').classList.add('hidden');
+    document.getElementById('main-screen').classList.remove('hidden');
+}
+
 // Initial UI update on page load
 window.onload = updateUI;
