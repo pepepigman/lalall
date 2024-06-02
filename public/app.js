@@ -1,5 +1,5 @@
 // Update with your Ngrok URL
-const serverUrl = 'https://lalal-xjv7.vercel.app/';
+const serverUrl = 'https://lalall-jet.vercel.app/';
 
 // Function to create a wallet
 async function createWallet() {
