@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.header {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.close-button {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #bbb;
+}
+
+.main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-button {
+    width: 80%;
+    max-width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.quick-buy {
+    background-color: #6e44ff;
+    color: #fff;
+}
+
+.dashboard {
+    background-color: #757575;
+    color: #fff;
+}
+
+.action-button:hover {
+    opacity: 0.8;
+}
+
+.token-input {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.preset-amounts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.preset-button {
+    background-color: #6e44ff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.preset-button:hover {
+    opacity: 0.8;
+}
+
+.actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    width: 80%;
+    border: 0;
+    height: 1px;
+    background-color: #333;
+    margin: 20px 0;
+}
