@@ -9,6 +9,7 @@ async function createWallet() {
         console.log('Wallet created:', data);
         alert(`New Wallet Created!\nPublic Key: ${data.publicKey}`);
         localStorage.setItem('walletPublicKey', data.publicKey);
+        console.log('Wallet Public Key saved to local storage:', data.publicKey);
         updateUI();  // Ensure UI is updated after wallet creation
     } catch (error) {
         console.error('Error creating wallet:', error);
@@ -30,6 +31,7 @@ async function importWallet() {
         console.log('Wallet imported:', data);
         alert(`Wallet Imported!\nPublic Key: ${data.publicKey}`);
         localStorage.setItem('walletPublicKey', data.publicKey);
+        console.log('Wallet Public Key saved to local storage:', data.publicKey);
         updateUI();  // Ensure UI is updated after wallet import
     } catch (error) {
         console.error('Error importing wallet:', error);
@@ -40,7 +42,7 @@ async function importWallet() {
 // Function to update UI based on wallet presence
 function updateUI() {
     const walletPublicKey = localStorage.getItem('walletPublicKey');
-    console.log('Updating UI. Wallet Public Key:', walletPublicKey);  // Debug log
+    console.log('Updating UI. Wallet Public Key from local storage:', walletPublicKey);  // Debug log
     if (walletPublicKey) {
         document.getElementById('start-screen').classList.add('hidden');
         document.getElementById('main-screen').classList.remove('hidden');
