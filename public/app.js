@@ -1,5 +1,4 @@
-// Update with your Ngrok URL
-const serverUrl = 'https://lalall-jet.vercel.app/';
+const serverUrl = 'https://lalal-xjv7.vercel.app/';
 
 // Function to create a wallet
 async function createWallet() {
@@ -33,3 +32,19 @@ async function importWallet() {
         console.error('Error importing wallet:', error);
     }
 }
+
+// Function to update UI based on wallet presence
+function updateUI() {
+    const walletPublicKey = localStorage.getItem('walletPublicKey');
+    if (walletPublicKey) {
+        document.getElementById('start-screen').classList.add('hidden');
+        document.getElementById('main-screen').classList.remove('hidden');
+        document.getElementById('wallet-public-key').innerText = walletPublicKey;
+    } else {
+        document.getElementById('start-screen').classList.remove('hidden');
+        document.getElementById('main-screen').classList.add('hidden');
+    }
+}
+
+// Initial UI update on page load
+window.onload = updateUI;
