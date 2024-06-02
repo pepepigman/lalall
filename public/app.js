@@ -2,6 +2,7 @@ const serverUrl = 'https://lalall-jet.vercel.app/';
 
 // Function to create a wallet
 async function createWallet() {
+    console.log('Creating wallet...');
     try {
         const response = await fetch(`${serverUrl}/create-wallet`, { method: 'POST' });
         const data = await response.json();
@@ -11,11 +12,13 @@ async function createWallet() {
         updateUI();  // Ensure UI is updated after wallet creation
     } catch (error) {
         console.error('Error creating wallet:', error);
+        alert('Error creating wallet: ' + error.message);
     }
 }
 
 // Function to import a wallet
 async function importWallet() {
+    console.log('Importing wallet...');
     const secretKey = prompt('Enter your secret key (comma-separated):');
     try {
         const response = await fetch(`${serverUrl}/import-wallet`, {
@@ -30,6 +33,7 @@ async function importWallet() {
         updateUI();  // Ensure UI is updated after wallet import
     } catch (error) {
         console.error('Error importing wallet:', error);
+        alert('Error importing wallet: ' + error.message);
     }
 }
 
@@ -49,18 +53,27 @@ function updateUI() {
 
 // Navigation functions
 function showQuickBuy() {
+    console.log('Showing Quick Buy screen');
     document.getElementById('main-screen').classList.add('hidden');
     document.getElementById('quick-buy-screen').classList.remove('hidden');
 }
 
 function showDashboard() {
+    console.log('Showing Dashboard screen');
     // Implement the logic for showing the dashboard screen
 }
 
 function showMainScreen() {
+    console.log('Showing Main screen');
     document.getElementById('quick-buy-screen').classList.add('hidden');
     document.getElementById('main-screen').classList.remove('hidden');
 }
 
 // Initial UI update on page load
-window.onload = updateUI;
+window.onload = function() {
+    console.log('Window loaded');
+    updateUI();
+};
+
+// Fallback mechanism to force UI update after a delay (in case of timing issues)
+setTimeout(updateUI, 2000);
