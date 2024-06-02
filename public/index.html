@@ -15,16 +15,25 @@
                 <p>Start by choosing what you want to do.</p>
             </div>
             <div class="main-content">
-                <button class="action-button quick-buy" style="display: none;">Quick Buy</button>
-                <button class="action-button dashboard" style="display: none;">Dashboard</button>
                 <button class="action-button create-wallet" onclick="createWallet()">Create Wallet</button>
                 <button class="action-button import-wallet" onclick="importWallet()">Import Wallet</button>
             </div>
         </div>
 
+        <div id="main-screen" class="screen hidden">
+            <div class="header">
+                <h1>ChainScout Sniper Dashboard</h1>
+                <p>Wallet Public Key: <span id="wallet-public-key"></span></p>
+            </div>
+            <div class="main-content">
+                <button class="action-button" onclick="showQuickBuy()">Quick Buy</button>
+                <button class="action-button" onclick="showDashboard()">Dashboard</button>
+            </div>
+        </div>
+
         <div id="quick-buy-screen" class="screen hidden">
             <div class="header">
-                <span class="close-button" onclick="showStartScreen()">×</span>
+                <span class="close-button" onclick="showMainScreen()">×</span>
                 <h1>Quick Buy</h1>
             </div>
             <div class="main-content">
