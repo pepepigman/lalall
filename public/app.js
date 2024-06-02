@@ -3,12 +3,12 @@ const serverUrl = 'https://lalall-jet.vercel.app/';
 // Function to create a wallet
 async function createWallet() {
     console.log('Creating wallet...');
+    // Adding a visible change to ensure the latest code is running
+    document.body.style.backgroundColor = '#ff0000'; // Change background color to red
     try {
         const response = await fetch(`${serverUrl}/create-wallet`, { method: 'POST' });
         const data = await response.json();
         console.log('Wallet created:', data);
-        // Commenting out the alert for now to avoid any interference
-        // alert(`New Wallet Created!\nPublic Key: ${data.publicKey}`);
         localStorage.setItem('walletPublicKey', data.publicKey);
         console.log('Wallet Public Key saved to local storage:', data.publicKey);
         updateUI();  // Ensure UI is updated after wallet creation
@@ -30,8 +30,6 @@ async function importWallet() {
         });
         const data = await response.json();
         console.log('Wallet imported:', data);
-        // Commenting out the alert for now to avoid any interference
-        // alert(`Wallet Imported!\nPublic Key: ${data.publicKey}`);
         localStorage.setItem('walletPublicKey', data.publicKey);
         console.log('Wallet Public Key saved to local storage:', data.publicKey);
         updateUI();  // Ensure UI is updated after wallet import
