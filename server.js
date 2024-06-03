@@ -7,8 +7,8 @@ const { Keypair, Connection, PublicKey, clusterApiUrl, Transaction, SystemProgra
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Replace with your actual secret key or fetch from secure storage
-const secretKey = [/* your secret key array here */];
+// Fetch the secret key from environment variables
+const secretKey = JSON.parse(process.env.SOLANA_SECRET_KEY);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
