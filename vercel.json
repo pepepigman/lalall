@@ -6,6 +6,9 @@
       "use": "@vercel/node"
     }
   ],
+  "env": {
+    "SOLANA_SECRET_KEY": "@solana_secret_key"
+  },
   "routes": [
     {
       "src": "/(.*)",
