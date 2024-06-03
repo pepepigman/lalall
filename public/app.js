@@ -75,6 +75,65 @@ function showMainScreen() {
     document.getElementById('main-screen').classList.remove('hidden');
 }
 
+// Function to buy tokens
+async function buyTokens() {
+    const tokenAddress = document.getElementById('token-address').value;
+    const amount = parseFloat(document.getElementById('token-amount').value);
+    const walletPublicKey = localStorage.getItem('walletPublicKey');
+
+    if (!tokenAddress || isNaN(amount) || !walletPublicKey) {
+        alert('Please provide valid inputs');
+        return;
+    }
+
+    try {
+        const response = await fetch(`${serverUrl}/buy-tokens`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tokenAddress, amount, walletPublicKey })
+        });
+        const data = await response.json();
+        if (data.success) {
+            alert('Tokens bought successfully!');
+        } else {
+            alert('Error buying tokens: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Error buying tokens:', error);
+        alert('Error buying tokens: ' + error.message);
+    }
+}
+
+// Function to sell tokens
+async function sellTokens() {
+    const tokenAddress = document.getElementById('token-address').value;
+    const amount = parseFloat(document.getElementById('token-amount').value);
+    const walletPublicKey = localStorage.getItem('walletPublicKey');
+
+    if (!tokenAddress || isNaN(amount) || !walletPublicKey) {
+        alert('Please provide valid inputs');
+        return;
+    }
+
+    try {
+        const response = await fetch(`${serverUrl}/sell-tokens`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tokenAddress, amount, walletPublicKey })
+        });
+        const data = await response.json();
+        if (data.success) {
+            alert('Tokens sold successfully!');
+        } else {
+            alert('Error selling tokens: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Error selling tokens:', error);
+        alert('Error selling tokens: ' + error.message);
+    }
+}
+
+
 // Initial UI update on page load
 window.onload = function() {
     console.log('Window loaded, updating UI');
