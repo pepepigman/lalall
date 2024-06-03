@@ -7,7 +7,7 @@
     }
   ],
   "env": {
-    "SOLANA_SECRET_KEY": "@solana_secret_key"
+    "SOLANA_SECRET_KEY": "solana_secret_key"
   },
   "routes": [
     {
