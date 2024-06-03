@@ -2,17 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js",
+      "src": "api/*.js",
       "use": "@vercel/node"
     }
   ],
-  "env": {
-    "SOLANA_SECRET_KEY": "solana_secret_key"
-  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/server.js"
+      "dest": "/api/server.js"
     }
   ]
 }
