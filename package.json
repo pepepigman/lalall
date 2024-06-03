@@ -1,9 +1,9 @@
 {
   "name": "solana-wallet-server",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "vercel dev"
   },
   "dependencies": {
     "express": "4.17.1",
