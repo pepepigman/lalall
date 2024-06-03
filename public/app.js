@@ -1,24 +1,20 @@
 const serverUrl = 'https://lalall-jet.vercel.app/';
 
-// Function to create a wallet
 async function createWallet() {
     console.log('Creating wallet...');
     try {
         const response = await fetch(`${serverUrl}/create-wallet`, { method: 'POST' });
         const data = await response.json();
         console.log('Wallet created:', data);
-        // Commenting out the alert for now to avoid any interference
-        // alert(`New Wallet Created!\nPublic Key: ${data.publicKey}`);
         localStorage.setItem('walletPublicKey', data.publicKey);
         console.log('Wallet Public Key saved to local storage:', data.publicKey);
-        updateUI();  // Ensure UI is updated after wallet creation
+        updateUI();
     } catch (error) {
         console.error('Error creating wallet:', error);
         alert('Error creating wallet: ' + error.message);
     }
 }
 
-// Function to import a wallet
 async function importWallet() {
     console.log('Importing wallet...');
     const secretKey = prompt('Enter your secret key (comma-separated):');
@@ -30,21 +26,18 @@ async function importWallet() {
         });
         const data = await response.json();
         console.log('Wallet imported:', data);
-        // Commenting out the alert for now to avoid any interference
-        // alert(`Wallet Imported!\nPublic Key: ${data.publicKey}`);
         localStorage.setItem('walletPublicKey', data.publicKey);
         console.log('Wallet Public Key saved to local storage:', data.publicKey);
-        updateUI();  // Ensure UI is updated after wallet import
+        updateUI();
     } catch (error) {
         console.error('Error importing wallet:', error);
         alert('Error importing wallet: ' + error.message);
     }
 }
 
-// Function to update UI based on wallet presence
 function updateUI() {
     const walletPublicKey = localStorage.getItem('walletPublicKey');
-    console.log('Updating UI. Wallet Public Key from local storage:', walletPublicKey);  // Debug log
+    console.log('Updating UI. Wallet Public Key from local storage:', walletPublicKey);
     if (walletPublicKey) {
         console.log('Switching to main screen');
         document.getElementById('start-screen').classList.add('hidden');
@@ -57,7 +50,6 @@ function updateUI() {
     }
 }
 
-// Navigation functions
 function showQuickBuy() {
     console.log('Showing Quick Buy screen');
     document.getElementById('main-screen').classList.add('hidden');
@@ -69,7 +61,6 @@ function showDashboard() {
     // Implement the logic for showing the dashboard screen
 }
 
-// Function to handle token purchase
 async function buyToken(amount) {
     const tokenAddress = document.querySelector('.token-input').value;
     const walletPublicKey = localStorage.getItem('walletPublicKey');
@@ -100,21 +91,15 @@ async function buyToken(amount) {
     }
 }
 
-// Add event listener to the preset button for buying 0.1 SOL worth of token
-document.querySelector('.preset-button').addEventListener('click', () => buyToken(0.01));
-
-
 function showMainScreen() {
     console.log('Showing Main screen');
     document.getElementById('quick-buy-screen').classList.add('hidden');
     document.getElementById('main-screen').classList.remove('hidden');
 }
 
-// Initial UI update on page load
 window.onload = function() {
     console.log('Window loaded, updating UI');
     updateUI();
 };
 
-// Fallback mechanism to force UI update after a delay (in case of timing issues)
 setTimeout(updateUI, 2000);
