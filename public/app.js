@@ -3,7 +3,7 @@ const serverUrl = 'https://lalall-jet.vercel.app/';
 async function createWallet() {
     console.log('Creating wallet...');
     try {
-        const response = await fetch(`${serverUrl}/create-wallet`, { method: 'POST' });
+        const response = await fetch(`${serverUrl}/api/create-wallet`, { method: 'POST' });
         const data = await response.json();
         console.log('Wallet created:', data);
         localStorage.setItem('walletPublicKey', data.publicKey);
@@ -19,7 +19,7 @@ async function importWallet() {
     console.log('Importing wallet...');
     const secretKey = prompt('Enter your secret key (comma-separated):');
     try {
-        const response = await fetch(`${serverUrl}/import-wallet`, {
+        const response = await fetch(`${serverUrl}/api/import-wallet`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ secretKey: secretKey.split(',').map(Number) })
@@ -35,32 +35,6 @@ async function importWallet() {
     }
 }
 
-function updateUI() {
-    const walletPublicKey = localStorage.getItem('walletPublicKey');
-    console.log('Updating UI. Wallet Public Key from local storage:', walletPublicKey);
-    if (walletPublicKey) {
-        console.log('Switching to main screen');
-        document.getElementById('start-screen').classList.add('hidden');
-        document.getElementById('main-screen').classList.remove('hidden');
-        document.getElementById('wallet-public-key').innerText = walletPublicKey;
-    } else {
-        console.log('Switching to start screen');
-        document.getElementById('start-screen').classList.remove('hidden');
-        document.getElementById('main-screen').classList.add('hidden');
-    }
-}
-
-function showQuickBuy() {
-    console.log('Showing Quick Buy screen');
-    document.getElementById('main-screen').classList.add('hidden');
-    document.getElementById('quick-buy-screen').classList.remove('hidden');
-}
-
-function showDashboard() {
-    console.log('Showing Dashboard screen');
-    // Implement the logic for showing the dashboard screen
-}
-
 async function buyToken(amount) {
     const tokenAddress = document.querySelector('.token-input').value;
     const walletPublicKey = localStorage.getItem('walletPublicKey');
@@ -71,7 +45,7 @@ async function buyToken(amount) {
     }
 
     try {
-        const response = await fetch(`${serverUrl}/buy-token`, {
+        const response = await fetch(`${serverUrl}/api/buy-token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,15 +65,4 @@ async function buyToken(amount) {
     }
 }
 
-function showMainScreen() {
-    console.log('Showing Main screen');
-    document.getElementById('quick-buy-screen').classList.add('hidden');
-    document.getElementById('main-screen').classList.remove('hidden');
-}
-
-window.onload = function() {
-    console.log('Window loaded, updating UI');
-    updateUI();
-};
-
-setTimeout(updateUI, 2000);
+document.querySelector('.preset-button').addEventListener('click', () => buyToken(0.1));
