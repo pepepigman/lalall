@@ -54,6 +54,19 @@
             </div>
         </div>
     </div>
+    <div id="quick-buy-screen" class="screen hidden">
+    <div class="header">
+        <span class="close-button" onclick="showMainScreen()">×</span>
+        <h1>Quick Buy</h1>
+    </div>
+    <div class="main-content">
+        <input type="text" id="token-address" placeholder="Paste token address" class="token-input">
+        <input type="text" id="token-amount" placeholder="Amount" class="token-input">
+        <button class="action-button" onclick="buyTokens()">Buy Tokens</button>
+        <button class="action-button" onclick="sellTokens()">Sell Tokens</button>
+    </div>
+</div>
+
     <script src="app.js"></script>
 </body>
 </html>
