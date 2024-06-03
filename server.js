@@ -46,6 +46,43 @@ app.post('/import-wallet', (req, res) => {
     }
 });
 
+// Endpoint to buy tokens
+app.post('/buy-tokens', async (req, res) => {
+    const { tokenAddress, amount, walletPublicKey } = req.body;
+    try {
+        // Logic to buy tokens
+        // Create, sign, and send a transaction to the Solana blockchain
+        // This is a placeholder. Actual implementation will vary based on the token and contract
+        // Assume a function `buyTokens` handles this logic
+
+        await buyTokens(tokenAddress, amount, walletPublicKey);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error buying tokens:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// Endpoint to sell tokens
+app.post('/sell-tokens', async (req, res) => {
+    const { tokenAddress, amount, walletPublicKey } = req.body;
+    try {
+        // Logic to sell tokens
+        // Create, sign, and send a transaction to the Solana blockchain
+        // This is a placeholder. Actual implementation will vary based on the token and contract
+        // Assume a function `sellTokens` handles this logic
+
+        await sellTokens(tokenAddress, amount, walletPublicKey);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error selling tokens:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+
 // Catch-all to serve index.html for any other routes
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
